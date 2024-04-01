@@ -11,4 +11,6 @@ loader.push_dir("app")
 loader.enable_reloading
 loader.setup
 
+require_relative "site"
+
 Builder.loader = loader
