@@ -36,5 +36,18 @@ module Layouts
         end
       end
     end
+
+    private
+
+    def theme
+      {
+        container: tokens(
+          "min-h-screen",
+          "bg-base-300",
+          "grid",
+          "place-items-center"
+        )
+      }
+    end
   end
 end
