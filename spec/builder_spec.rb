@@ -12,7 +12,7 @@ RSpec.describe Builder do
     files.touch("public/favicon-16x16.png")
     files.touch("public/favicon-32x32.png")
     files.touch("public/site.webmanifest")
-    builder = described_class.new(files)
+    builder = described_class.new(files:, output: "build")
     builder.call
 
     expect(files.exist?("build/index.html")).to be(true)
