@@ -10,17 +10,6 @@ class Router
       end
     end
 
-    def definitions
-      routes = @routes.dup
-
-      {}.tap do |defs|
-        defs["index.html"] = routes.delete("/")
-        routes.each do |path, to|
-          defs["#{path}.html"] = to
-        end
-      end
-    end
-
     def match(path, to:)
       @routes[path] = to
     end

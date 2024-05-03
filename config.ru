@@ -2,10 +2,12 @@
 
 require "./config/boot"
 require "logger"
+require "./lib/routes"
 
 class Server < Roda
-  plugin :public, root: "build"
+  # plugin :public, root: "build"
   plugin :common_logger, Logger.new($stdout), method: :info
+  plugin :render, engine: "html"
 
   plugin :error_handler do |_e|
     File.read("build/500.html")
@@ -15,8 +17,17 @@ class Server < Roda
   end
 
   route do |r|
-    r.public
-    r.root { r.redirect "/index.html" }
+    Router.routes.each do |path, to|
+      if path == "/"
+        r.root do
+          render(inline: to.call(view_context: nil))
+        end
+      else
+        r.get path do
+          render(inline: to.call(view_context: nil))
+        end
+      end
+    end
   end
 end
 

@@ -30,9 +30,17 @@ class Builder
   private
 
   def build_site
-    @router.definitions.each do |filepath, component|
-      compile(filepath, render(component))
-    end
+    routes = @router
+      .routes.dup
+      .then do |routes|
+        routes["index"] = routes.delete("/")
+        routes.transform_keys { |key| "#{key}.html" }
+      end
+
+    routes
+      .each do |filepath, component|
+        compile(filepath, render(component))
+      end
   end
 
   def render(component)

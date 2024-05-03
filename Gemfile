@@ -15,6 +15,7 @@ gem "rack"
 gem "rackup"
 gem "rake"
 gem "rouge"
+gem "tilt"
 gem "vite_ruby"
 gem "zeitwerk"
 
