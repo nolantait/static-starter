@@ -2,7 +2,6 @@
 
 require "./config/boot"
 require "logger"
-require "./lib/routes"
 
 class Server < Roda
   # plugin :public, root: "build"

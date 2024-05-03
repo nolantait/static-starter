@@ -3,7 +3,7 @@
 module Pages
   class Home < Page
     def view_template
-      h1 { "Hello fuckface" }
+      h1 { "Hello swag" }
     end
   end
 end

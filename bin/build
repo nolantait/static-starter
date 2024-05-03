@@ -11,5 +11,4 @@ unless File.exist?("build/vite")
   system "bin/vite build"
 end
 
-Routes.setup
 Builder.new.call
