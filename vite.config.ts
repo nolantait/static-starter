@@ -5,6 +5,12 @@ import FullReload from 'vite-plugin-full-reload'
 export default defineConfig({
   plugins: [
     RubyPlugin(),
-    FullReload(['app/**/*'], { delay: 500 }),
+    FullReload(
+      [
+        'app/**/*',
+        'lib/**/*',
+      ],
+      { delay: 2000 }
+    ),
   ],
 })

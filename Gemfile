@@ -27,6 +27,7 @@ end
 
 group :development do
   gem "listen"
+  gem "rerun"
   gem "roda"
   gem "rubocop-inhouse", require: false
 end

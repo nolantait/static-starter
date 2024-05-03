@@ -8,9 +8,19 @@ class Router
     attr_reader :routes
 
     def define(&block)
+      @routes = {}
+
       tap do
         instance_eval(&block)
       end
+    end
+
+    def filepaths
+      routes.dup
+        .then do |routes|
+          routes["index"] = routes.delete("/")
+          routes.transform_keys { |key| "#{key}.html" }
+        end
     end
 
     def match(path, to:)

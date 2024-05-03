@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
+require "debug"
 require_relative "routes"
 
 class Builder
   class << self
-    attr_accessor :loader
-
     def call(...)
       new(...).call
     end
@@ -22,22 +21,11 @@ class Builder
     build_site
   end
 
-  def watch
-    listener.start
-    sleep
-  end
-
   private
 
   def build_site
-    routes = @router
-      .routes.dup
-      .then do |routes|
-        routes["index"] = routes.delete("/")
-        routes.transform_keys { |key| "#{key}.html" }
-      end
-
-    routes
+    @router
+      .filepaths
       .each do |filepath, component|
         compile(filepath, render(component))
       end
@@ -50,16 +38,6 @@ class Builder
   def copy_public_files
     Dir["public/*"].each do |file|
       copy(file, file.gsub("public/", ""))
-    end
-  end
-
-  def listener
-    call
-
-    Listen.to("app") do
-      puts "Rebuilding..."
-      self.class.loader.reload
-      call
     end
   end
 

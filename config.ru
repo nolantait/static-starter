@@ -18,14 +18,16 @@ class Server < Roda
   end
 
   route do |r|
-    Router.routes.each do |path, to|
-      if path == "/"
+    Router.filepaths.each_key do |filepath|
+      path = filepath.gsub(".html", "")
+
+      if path == "index"
         r.root do
-          render(inline: to.call(view_context: nil))
+          render(inline: File.read("build/index.html"))
         end
       else
         r.get path do
-          render(inline: to.call(view_context: nil))
+          render(inline: File.read("build/#{filepath}"))
         end
       end
     end

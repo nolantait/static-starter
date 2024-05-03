@@ -4,8 +4,12 @@
 require "bundler/setup"
 require "./config/boot"
 
-ENV["RACK_ENV"] = "production"
-ENV["RAILS_ENV"] = "production"
+ENV["RACK_ENV"] = "development"
+ENV["RAILS_ENV"] = "development"
 
-system "bin/vite build"
+unless File.exist?("build/vite")
+  system "bin/vite build"
+end
+
+Routes.setup
 Builder.new.call
