@@ -1,6 +1,8 @@
+# frozen_string_literal: true
+
 RSpec.describe Router do
   it "defines routes" do
-    router = Router.define do
+    router = described_class.define do
       root to: Pages::Home
       match "hello", to: Pages::Home
     end

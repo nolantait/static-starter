@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 Router.define do
   root to: Pages::Home
   match "404", to: Pages::NotFound
