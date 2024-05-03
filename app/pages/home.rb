@@ -2,7 +2,7 @@
 
 module Pages
   class Home < Page
-    def template
+    def view_template
       h1 { "Hello world" }
     end
   end

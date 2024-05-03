@@ -1,4 +1,7 @@
 class Router
+  # DOCS: Holds routes as a class instance variable. This class is expected to
+  # be used as a singleton by requiring the "routes.rb" file.
+
   @routes = {}
 
   class << self

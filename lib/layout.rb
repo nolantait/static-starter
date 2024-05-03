@@ -1,5 +1,5 @@
 # frozen_string_literal: true
 
-class Layout < Page
+class Layout < Component
   include ViteHelpers
 end

@@ -2,7 +2,7 @@
 
 module Pages
   class NotFound < Page
-    def template
+    def view_template
       h1 { "Page not found." }
     end
   end

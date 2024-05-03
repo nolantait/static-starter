@@ -12,6 +12,7 @@ class Server < Roda
   plugin :error_handler do |_e|
     File.read("build/500.html")
   end
+
   plugin :not_found do
     File.read("build/404.html")
   end

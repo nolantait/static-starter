@@ -2,7 +2,7 @@
 
 module Pages
   class ServiceError < Page
-    def template
+    def view_template
       h1 { "Something went wrong." }
     end
   end
