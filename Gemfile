@@ -7,9 +7,11 @@ ruby File.read(".ruby-version").strip
 
 gem "protos", github: "inhouse-work/protos", branch: "master"
 gem "protos-icon"
+gem "protos-markdown", path: "../protos-markdown" # github: "inhouse-work/protos-markdown", branch: "master"
 
 gem "dry-files"
 gem "dry-inflector"
+gem "front_matter_parser"
 gem "phlex"
 gem "rack"
 gem "rackup"

@@ -43,9 +43,7 @@ module Layouts
       {
         container: tokens(
           "min-h-screen",
-          "bg-base-300",
-          "grid",
-          "place-items-center"
+          "bg-base-300"
         )
       }
     end

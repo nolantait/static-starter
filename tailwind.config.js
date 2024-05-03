@@ -76,6 +76,7 @@ module.exports = {
   },
   plugins: [
     require("daisyui"),
+    require('@tailwindcss/typography'),
     require("./frontend/tailwindcss/variable_font_plugin"),
   ],
 }

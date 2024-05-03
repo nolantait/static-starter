@@ -10,6 +10,13 @@ GIT
       phlex (~> 1.10)
       tailwind_merge (~> 0.10)
 
+PATH
+  remote: ../protos-markdown
+  specs:
+    protos-markdown (0.1.0)
+      markly (~> 0.7)
+      protos (>= 0.4)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -63,6 +70,7 @@ GEM
       dry-logic (~> 1.4)
       zeitwerk (~> 2.6)
     ffi (1.16.3)
+    front_matter_parser (1.0.1)
     i18n (1.14.4)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -75,6 +83,7 @@ GEM
       rb-fsevent (~> 0.10, >= 0.10.3)
       rb-inotify (~> 0.9, >= 0.9.10)
     lru_redux (1.1.0)
+    markly (0.10.0)
     matrix (0.4.2)
     mini_mime (1.1.5)
     minitest (5.22.3)
@@ -212,11 +221,13 @@ DEPENDENCIES
   debug
   dry-files
   dry-inflector
+  front_matter_parser
   listen
   phlex
   phlex-testing-capybara
   protos!
   protos-icon
+  protos-markdown!
   rack
   rackup
   rake
