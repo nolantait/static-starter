@@ -38,6 +38,10 @@
     @apply bg-base-400;
   }
 
+  .prose pre {
+    @apply bg-base-300 border;
+  }
+
   * {
     scrollbar-width: thin;
     scrollbar-color: theme("colors.base-200") theme("colors.base-300");

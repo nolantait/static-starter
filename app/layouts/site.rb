@@ -42,10 +42,7 @@ module Layouts
 
     def theme
       {
-        container: tokens(
-          "min-h-screen",
-          "bg-base-300"
-        )
+        container: "min-h-screen"
       }
     end
   end
