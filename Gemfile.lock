@@ -1,14 +1,8 @@
-GIT
-  remote: https://github.com/inhouse-work/protos.git
-  revision: 3536811da6c8e6292b27a3f6b91b954f34377d5c
-  branch: master
+PATH
+  remote: ../protos-icon
   specs:
-    protos (0.4.2)
-      dry-core (~> 1.0)
-      dry-initializer (~> 3.1)
-      dry-types (~> 1.7)
+    protos-icon (0.2.0)
       phlex (~> 1.10)
-      tailwind_merge (~> 0.10)
 
 PATH
   remote: ../protos-markdown
@@ -16,6 +10,16 @@ PATH
     protos-markdown (0.1.0)
       markly (~> 0.7)
       protos (>= 0.4)
+
+PATH
+  remote: ../protos
+  specs:
+    protos (0.4.2)
+      dry-core (~> 1.0)
+      dry-initializer (~> 3.1)
+      dry-types (~> 1.7)
+      phlex (~> 1.10)
+      tailwind_merge (~> 0.10)
 
 GEM
   remote: https://rubygems.org/
@@ -108,8 +112,6 @@ GEM
     phlex-testing-capybara (0.1.0)
       capybara (~> 3.38)
       phlex (>= 0.5)
-    protos-icon (0.2.0)
-      phlex (~> 1.10)
     psych (5.1.2)
       stringio
     public_suffix (5.0.5)
@@ -226,7 +228,7 @@ DEPENDENCIES
   phlex
   phlex-testing-capybara
   protos!
-  protos-icon
+  protos-icon!
   protos-markdown!
   rack
   rackup

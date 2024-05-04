@@ -5,8 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby File.read(".ruby-version").strip
 
-gem "protos", github: "inhouse-work/protos", branch: "master"
-gem "protos-icon"
+gem "protos", path: "../protos" # github: "inhouse-work/protos", branch: "master"
+gem "protos-icon", path: "../protos-icon"
 gem "protos-markdown", path: "../protos-markdown" # github: "inhouse-work/protos-markdown", branch: "master"
 
 gem "dry-files"

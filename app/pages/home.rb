@@ -12,7 +12,7 @@ module Pages
         hero.overlay(class: "opacity-90")
         hero.content(class: "flex-col text-white") do
           h1 { "Ruby maximalism" }
-          p { "Zen vibes only" }
+          p(margin: false) { "Zen vibes only" }
         end
       end
     end
