@@ -21,8 +21,8 @@ sources:
 
 Apps are containers for both the logic and data of your game. Our `App` is what
 controls the loop of our game so that our
-[systems](<%= link "_posts/bevy/systems.md" %>) can update our
-[world](<%= link "_posts/bevy/worlds.md" %>).
+[systems](/bevy/systems) can update our
+[world](/bevy/world).
 
 There are two core parts of every `App`:
 1. `World` which holds your data (entities, components)

@@ -8,23 +8,21 @@ class Post < Protos::Markdown
         h1 { front_matter[:title] }
         span(class: "text-sm") do
           plain "Last updated: "
-          time(datetime: date.iso8601) do
-            date.strftime("%B %d, %Y")
-          end
+          time(datetime: date.iso8601) { date.strftime("%B %d, %Y") }
         end
       end
 
-      div(class: "prose max-w-none") do
+      div(class: "prose mx-auto pb-lg") do
         super
-      end
 
-      footer do
-        if sources.any?
-          h2 { "Read more" }
-          ul(class: "overflow-x-auto") do
-            sources.each do |href|
-              li do
-                a(href:, class: "link") { href }
+        footer do
+          if sources.any?
+            h2 { "Read more" }
+            ul(class: "overflow-x-auto") do
+              sources.each do |href|
+                li do
+                  a(href:, class: "link") { href }
+                end
               end
             end
           end
