@@ -15,8 +15,6 @@ Router.define do
       loader: FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
     )
 
-    puts parsed.content
-
     match file.gsub("content/", "").gsub(".md", ""),
           to: Post.new(
             parsed.content,
