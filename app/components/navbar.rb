@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Components
   class Navbar < Component
     def view_template

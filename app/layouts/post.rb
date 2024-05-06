@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Layouts
   class Post < Layout
     def view_template(...)
