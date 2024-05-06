@@ -28,7 +28,7 @@ module Layouts
           meta name: "apple-mobile-web-app-status-bar-style", content: "default"
           meta name: "apple-mobile-web-app-title", content: ::Site.title
           vite_client_tag unless ENV["RACK_ENV"] == "production"
-          vite_javascript_tag "application"
+          javascript_tag "application"
         end
 
         body do

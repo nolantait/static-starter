@@ -15,7 +15,7 @@ Router.define do
     parsed = FrontMatterParser::Parser.parse_file(file, loader:)
 
     match file.gsub("content/", "").gsub(".md", ""),
-          to: Post.new(
+          to: Pages::Post.new(
             parsed.content,
             front_matter: parsed.front_matter.transform_keys(&:to_sym)
           )
