@@ -3,6 +3,8 @@
 require "date"
 require "front_matter_parser"
 
+loader = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
+
 Router.define do
   root to: Pages::Home
   match "404", to: Pages::NotFound
@@ -10,10 +12,7 @@ Router.define do
   match "test", to: Pages::Nested::Test
 
   Dir["content/**/*.md"].each do |file|
-    parsed = FrontMatterParser::Parser.parse_file(
-      file,
-      loader: FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
-    )
+    parsed = FrontMatterParser::Parser.parse_file(file, loader:)
 
     match file.gsub("content/", "").gsub(".md", ""),
           to: Post.new(
