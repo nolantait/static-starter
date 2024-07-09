@@ -17,5 +17,10 @@ module Staticky
         super(file)
       end
     end
+
+    def children(directory)
+      tokens = [".", ".."]
+      entries(directory).reject { |entry| tokens.include?(entry) }
+    end
   end
 end

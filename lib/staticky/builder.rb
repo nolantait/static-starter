@@ -6,7 +6,7 @@ module Staticky
 
     def initialize(
       files: Staticky::Files.real,
-      output: Staticky::ROOT_PATH.join("build"),
+      output: "build",
       root: Staticky::ROOT_PATH,
       router: Staticky::Router
     )
@@ -36,8 +36,8 @@ module Staticky
     end
 
     def copy_public_files
-      Dir[@root_path.join("public/*")].each do |file|
-        copy(file, output_path(file.gsub("public/", "")))
+      @files.children(@root_path.join("public")).each do |file|
+        copy(public_path(file), file.gsub("public/", ""))
       end
     end
 
@@ -50,7 +50,7 @@ module Staticky
     end
 
     def public_path(path)
-      @output_path.join("public", path)
+      @root_path.join("public", path)
     end
 
     def output_path(path)

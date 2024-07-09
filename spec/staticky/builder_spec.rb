@@ -15,7 +15,11 @@ RSpec.describe Staticky::Builder do
       "public/site.webmanifest"
     )
 
-    builder = described_class.new(files:, output: "build")
+    builder = described_class.new(
+      files:,
+      root: Pathname.new("."),
+      output: "build"
+    )
     builder.call
 
     expect(files.exist?("build/index.html")).to be(true)

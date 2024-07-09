@@ -7,6 +7,13 @@ GIT
       markly (~> 0.7)
       protos (>= 0.4)
 
+GIT
+  remote: https://github.com/nolantait/dry-files.git
+  revision: dc5a9db89ffd6fe81486096c80f080751f8b44e9
+  branch: entries-nt
+  specs:
+    dry-files (1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -45,7 +52,6 @@ GEM
     dry-core (1.0.1)
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-files (1.1.0)
     dry-inflector (1.1.0)
     dry-initializer (3.1.1)
     dry-logic (1.5.0)
@@ -233,7 +239,7 @@ PLATFORMS
 
 DEPENDENCIES
   debug
-  dry-files
+  dry-files!
   dry-inflector
   front_matter_parser
   listen

@@ -10,7 +10,7 @@ gem "protos"
 gem "protos-icon"
 gem "protos-markdown", github: "inhouse-work/protos-markdown", branch: "master"
 
-gem "dry-files"
+gem "dry-files", github: "nolantait/dry-files", branch: "entries-nt"
 gem "dry-inflector"
 gem "front_matter_parser"
 gem "phlex"
