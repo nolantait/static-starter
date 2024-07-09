@@ -48,12 +48,15 @@ require "front_matter_parser"
 
 loader = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
 
-Router.define do
-  root to: Pages::Home
-  match "404", to: Pages::NotFound
-  match "500", to: Pages::ServiceError
+Staticky.router.define do
+  root to: Pages::Home.new
+
+  # Link directly to components or their classes in your routes
+  match "404", to: Pages::NotFound.new
+  match "500", to: Pages::ServiceError.new(class: "bg-red-500")
   match "test", to: Pages::Nested::Test
 
+  # Write your own custom logic for parsing your markdown
   Dir["content/**/*.md"].each do |file|
     parsed = FrontMatterParser::Parser.parse_file(file, loader:)
 
@@ -65,3 +68,10 @@ Router.define do
   end
 end
 ```
+
+The router is your definition for how to build your static site.
+
+## Deployment
+
+Deployment is done through a simple Dockerfile. This setup is optimized for
+deploying onto Dokku servers.

@@ -263,10 +263,8 @@ DEPENDENCIES
   debug
   dry-files!
   dry-inflector
-  dry-system
   front_matter_parser
   listen
-  phlex
   phlex-testing-capybara
   protos
   protos-icon
@@ -280,7 +278,6 @@ DEPENDENCIES
   rspec
   rubocop-inhouse
   staticky!
-  tilt
   vite_ruby
   zeitwerk
 
