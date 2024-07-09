@@ -2,18 +2,16 @@
 
 module Staticky
   class Builder
-    class << self
-      def call(...)
-        new(...).call
-      end
-    end
+    def self.call(...) = new(...).call
 
     def initialize(
       files: Staticky::Files.real,
-      output: "build",
+      output: Staticky::ROOT_PATH.join("build"),
+      root: Staticky::ROOT_PATH,
       router: Staticky::Router
     )
       @files = files
+      @root_path = root
       @output_path = Pathname.new(output)
       @router = router
     end
@@ -38,23 +36,25 @@ module Staticky
     end
 
     def copy_public_files
-      Dir["public/*"].each do |file|
-        copy(file, file.gsub("public/", ""))
+      Dir[@root_path.join("public/*")].each do |file|
+        copy(file, output_path(file.gsub("public/", "")))
       end
     end
 
     def compile(filepath, content)
-      @files.write(
-        @output_path.join(filepath),
-        content
-      )
+      @files.write output_path(filepath), content
     end
 
     def copy(source, destination)
-      @files.cp(
-        source,
-        @output_path.join(destination)
-      )
+      @files.cp source, output_path(destination)
+    end
+
+    def public_path(path)
+      @output_path.join("public", path)
+    end
+
+    def output_path(path)
+      @output_path.join(path)
     end
   end
 end

@@ -5,25 +5,26 @@ module Staticky
     plugin :common_logger, Logger.new($stdout), method: :info
     plugin :render, engine: "html"
 
+    @root = Staticky::ROOT_PATH.join("build/development")
+
     plugin :error_handler do |_e|
-      File.read("build/500.html")
+      @root.join("500.html").read
     end
 
     plugin :not_found do
-      File.read("build/404.html")
+      @root.join("404.html").read
     end
 
     route do |r|
       Router.filepaths.each_key do |filepath|
-        path = filepath.gsub(".html", "")
-
-        if path == "index"
+        case filepath
+        when "index.html"
           r.root do
-            render(inline: File.read("build/index.html"))
+            render(inline: @root.join("index.html").read)
           end
         else
           r.get path do
-            render(inline: File.read("build/#{filepath}"))
+            render(inline: @root.join("#{filepath}.html").read)
           end
         end
       end
