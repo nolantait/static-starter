@@ -3,11 +3,12 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby File.read(".ruby-version").strip
+ruby_version = Pathname.new(__dir__).join(".ruby-version")
+ruby ruby_version.read.strip
 
-gem "protos", path: "../protos" # github: "inhouse-work/protos", branch: "master"
-gem "protos-icon", path: "../protos-icon"
-gem "protos-markdown", path: "../protos-markdown" # github: "inhouse-work/protos-markdown", branch: "master"
+gem "protos"
+gem "protos-icon"
+gem "protos-markdown", github: "inhouse-work/protos-markdown", branch: "master"
 
 gem "dry-files"
 gem "dry-inflector"

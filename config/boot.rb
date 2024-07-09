@@ -3,7 +3,7 @@
 ENV["RACK_ENV"] ||= "development"
 
 require "bundler"
-Bundler.require(:default, :development)
+Bundler.require(:default, ENV.fetch("RACK_ENV", nil))
 
 loader = Zeitwerk::Loader.new
 loader.push_dir("lib")
