@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require_relative "router/definition"
+
 module Staticky
   class Router
     # DOCS: Holds routes as a class instance variable. This class is expected to
@@ -8,26 +10,26 @@ module Staticky
     # NOTE: Why do we need our own router? Why not just use Roda for these
     # definitions? Roda is a routing tree and cannot be introspected easily.
 
-    @definition = Staticky::Router::Definition.new
+    def initialize
+      @definition = Staticky::Router::Definition.new
+    end
 
-    class << self
-      def define(&block)
-        tap do
-          @definition.instance_eval(&block)
-        end
+    def define(&block)
+      tap do
+        @definition.instance_eval(&block)
       end
+    end
 
-      def filepaths
-        @definition.filepaths
-      end
+    def filepaths
+      @definition.filepaths
+    end
 
-      def resources
-        @definition.resources
-      end
+    def resources
+      @definition.resources
+    end
 
-      def resolve(path)
-        @definition.resolve(path)
-      end
+    def resolve(path)
+      @definition.resolve(path)
     end
   end
 end

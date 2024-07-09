@@ -1,13 +1,19 @@
 # frozen_string_literal: true
 
-require_relative "../staticky"
+require "roda"
+require "logger"
+require "tilt"
 
 module Staticky
   class Server < Roda
+    NotFound = Class.new(Staticky::Error)
+
     plugin :common_logger, Logger.new($stdout), method: :debug
     plugin :render, engine: "html"
 
     plugin :not_found do
+      raise NotFound if Staticky.env.test?
+
       Staticky.build_path.join("404.html").read
     end
 
@@ -18,15 +24,15 @@ module Staticky
     end
 
     route do |r|
-      Router.resources.each do |resource|
+      Staticky.resources.each do |resource|
         case resource.filepath
         when "index.html"
           r.root do
-            render(inline: Staticky.build_path.join(resource.filepath).read)
+            render(inline: resource.read)
           end
         else
           r.get resource.url do
-            render(inline: Staticky.build_path.join(resource.filepath).read)
+            render(inline: resource.read)
           end
         end
       end

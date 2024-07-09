@@ -1,5 +1,8 @@
 # frozen_string_literal: true
 
+require "delegate"
+require "dry-files"
+
 module Staticky
   class Files < SimpleDelegator
     def self.test

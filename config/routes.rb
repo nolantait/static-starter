@@ -5,7 +5,7 @@ require "front_matter_parser"
 
 loader = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
 
-Staticky::Router.define do
+Staticky.router.define do
   root to: Pages::Home
   match "404", to: Pages::NotFound
   match "500", to: Pages::ServiceError

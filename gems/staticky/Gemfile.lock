@@ -1,13 +1,4 @@
 GIT
-  remote: https://github.com/inhouse-work/protos-markdown.git
-  revision: 9c8f290763e425317ac905c568f904cad28860e3
-  branch: master
-  specs:
-    protos-markdown (0.1.0)
-      markly (~> 0.7)
-      protos (>= 0.4)
-
-GIT
   remote: https://github.com/nolantait/dry-files.git
   revision: dc5a9db89ffd6fe81486096c80f080751f8b44e9
   branch: entries-nt
@@ -15,7 +6,7 @@ GIT
     dry-files (1.1.0)
 
 PATH
-  remote: gems/staticky
+  remote: .
   specs:
     staticky (0.1.0)
       dry-files
@@ -61,7 +52,6 @@ GEM
     dry-auto_inject (1.0.1)
       dry-core (~> 1.0)
       zeitwerk (~> 2.6)
-    dry-cli (1.0.0)
     dry-configurable (1.2.0)
       dry-core (~> 1.0, < 2)
       zeitwerk (~> 2.6)
@@ -69,34 +59,11 @@ GEM
       concurrent-ruby (~> 1.0)
       zeitwerk (~> 2.6)
     dry-inflector (1.1.0)
-    dry-initializer (3.1.1)
-    dry-logic (1.5.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0, < 2)
-      zeitwerk (~> 2.6)
     dry-system (1.0.1)
       dry-auto_inject (~> 1.0, < 2)
       dry-configurable (~> 1.0, < 2)
       dry-core (~> 1.0, < 2)
       dry-inflector (~> 1.0, < 2)
-    dry-types (1.7.2)
-      bigdecimal (~> 3.0)
-      concurrent-ruby (~> 1.0)
-      dry-core (~> 1.0)
-      dry-inflector (~> 1.0)
-      dry-logic (~> 1.4)
-      zeitwerk (~> 2.6)
-    ffi (1.17.0-aarch64-linux-gnu)
-    ffi (1.17.0-aarch64-linux-musl)
-    ffi (1.17.0-arm-linux-gnu)
-    ffi (1.17.0-arm-linux-musl)
-    ffi (1.17.0-arm64-darwin)
-    ffi (1.17.0-x86-linux-gnu)
-    ffi (1.17.0-x86-linux-musl)
-    ffi (1.17.0-x86_64-darwin)
-    ffi (1.17.0-x86_64-linux-gnu)
-    ffi (1.17.0-x86_64-linux-musl)
-    front_matter_parser (1.0.1)
     i18n (1.14.5)
       concurrent-ruby (~> 1.0)
     io-console (0.7.2)
@@ -105,72 +72,39 @@ GEM
       reline (>= 0.4.2)
     json (2.7.2)
     language_server-protocol (3.17.0.3)
-    listen (3.9.0)
-      rb-fsevent (~> 0.10, >= 0.10.3)
-      rb-inotify (~> 0.9, >= 0.9.10)
-    lru_redux (1.1.0)
-    markly (0.10.0)
     matrix (0.4.2)
     mini_mime (1.1.5)
+    mini_portile2 (2.8.7)
     minitest (5.24.1)
     mutex_m (0.2.0)
-    nokogiri (1.16.6-aarch64-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.6-arm-linux)
+    nokogiri (1.16.6)
+      mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     nokogiri (1.16.6-arm64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.6-x86-linux)
-      racc (~> 1.4)
-    nokogiri (1.16.6-x86_64-darwin)
-      racc (~> 1.4)
-    nokogiri (1.16.6-x86_64-linux)
       racc (~> 1.4)
     parallel (1.25.1)
     parser (3.3.3.0)
       ast (~> 2.4.1)
       racc
     phlex (1.11.0)
-    phlex-testing-capybara (0.1.0)
-      capybara (~> 3.38)
-      phlex (>= 0.5)
-    protos (0.4.2)
-      dry-core (~> 1.0)
-      dry-initializer (~> 3.1)
-      dry-types (~> 1.7)
-      phlex (~> 1.10)
-      tailwind_merge (~> 0.10)
-    protos-icon (0.2.0)
-      phlex (~> 1.10)
     psych (5.1.2)
       stringio
     public_suffix (6.0.0)
     racc (1.8.0)
     rack (3.1.6)
-    rack-proxy (0.7.7)
-      rack
     rack-test (2.1.0)
       rack (>= 1.3)
-    rackup (2.1.0)
-      rack (>= 3)
-      webrick (~> 1.8)
     rainbow (3.1.1)
     rake (13.2.1)
-    rb-fsevent (0.11.2)
-    rb-inotify (0.11.1)
-      ffi (~> 1.0)
     rdoc (6.7.0)
       psych (>= 4.0.0)
     regexp_parser (2.9.2)
     reline (0.5.9)
       io-console (~> 0.5)
-    rerun (0.14.0)
-      listen (~> 3.0)
     rexml (3.3.1)
       strscan
     roda (3.81.0)
       rack
-    rouge (4.3.0)
     rspec (3.13.0)
       rspec-core (~> 3.13.0)
       rspec-expectations (~> 3.13.0)
@@ -228,64 +162,26 @@ GEM
     ruby-progressbar (1.13.0)
     stringio (3.1.1)
     strscan (3.1.0)
-    tailwind_merge (0.12.0)
-      lru_redux (~> 1.1)
     tilt (2.4.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
     unicode-display_width (2.5.0)
-    vite_ruby (3.6.0)
-      dry-cli (>= 0.7, < 2)
-      rack-proxy (~> 0.6, >= 0.6.1)
-      zeitwerk (~> 2.2)
-    webrick (1.8.1)
     xpath (3.2.0)
       nokogiri (~> 1.8)
     zeitwerk (2.6.16)
 
 PLATFORMS
-  aarch64-linux
-  aarch64-linux-gnu
-  aarch64-linux-musl
-  arm-linux
-  arm-linux-gnu
-  arm-linux-musl
-  arm64-darwin
-  x86-linux
-  x86-linux-gnu
-  x86-linux-musl
-  x86_64-darwin
-  x86_64-linux-gnu
-  x86_64-linux-musl
+  arm64-darwin-23
+  ruby
 
 DEPENDENCIES
   capybara
   debug
   dry-files!
-  dry-inflector
-  dry-system
-  front_matter_parser
-  listen
-  phlex
-  phlex-testing-capybara
-  protos
-  protos-icon
-  protos-markdown!
-  rack
-  rackup
   rake
-  rerun
-  roda
-  rouge
   rspec
   rubocop-inhouse
   staticky!
-  tilt
-  vite_ruby
-  zeitwerk
-
-RUBY VERSION
-   ruby 3.3.3p89
 
 BUNDLED WITH
    2.5.14

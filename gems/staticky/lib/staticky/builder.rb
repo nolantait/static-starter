@@ -5,13 +5,13 @@ module Staticky
     def self.call(...) = new(...).call
 
     def initialize(
-      files: Staticky::Files.real,
-      output: "build",
-      root: Staticky::ROOT_PATH,
-      router: Staticky::Router
+      files: Staticky.files,
+      output: Staticky.build_path,
+      root: Staticky.root_path,
+      router: Staticky.router
     )
       @files = files
-      @root_path = root
+      @root_path = Pathname.new(root)
       @output_path = Pathname.new(output)
       @router = router
     end
@@ -27,29 +27,29 @@ module Staticky
       @router
         .resources
         .each do |resource|
-          compile(resource.filepath, render(resource.component))
+          compile(
+            output_path(resource.filepath),
+            resource.component.call(view_context: nil)
+          )
         end
-    end
-
-    def render(component)
-      component.call(view_context: nil)
     end
 
     def copy_public_files
       public_folder = @root_path.join("public")
+      return unless @files.exist? public_folder
 
       @files.children(public_folder).each do |file|
         # file => "favicon.ico"
-        copy(public_path(file), file)
+        copy(public_path(file), output_path(file))
       end
     end
 
     def compile(destination, content)
-      @files.write output_path(destination), content
+      @files.write destination, content
     end
 
     def copy(source, destination)
-      @files.cp source, output_path(destination)
+      @files.cp source, destination
     end
 
     def public_path(path)
