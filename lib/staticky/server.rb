@@ -4,30 +4,33 @@ require_relative "../staticky"
 
 module Staticky
   class Server < Roda
-    plugin :common_logger, Logger.new($stdout), method: :info
+    plugin :common_logger, Logger.new($stdout), method: :debug
     plugin :render, engine: "html"
-
-    plugin :error_handler do |e|
-      Staticky.build_path.join("500.html").read
-    end
 
     plugin :not_found do
       Staticky.build_path.join("404.html").read
     end
 
+    plugin :error_handler do |e|
+      raise e
+      Staticky.build_path.join("500.html").read
+    end
+
     route do |r|
-      Router.filepaths.each do |filepath|
-        case filepath
+      Router.resources.each do |resource|
+        case resource.filepath
         when "index.html"
           r.root do
-            render(inline: Staticky.build_path.join("index.html").read)
+            render(inline: Staticky.build_path.join(resource.filepath).read)
           end
         else
-          r.get path do
-            render(inline: Staticky.build_path.join("#{filepath}.html").read)
+          r.get resource.url do
+            render(inline: Staticky.build_path.join(resource.filepath).read)
           end
         end
       end
+
+      nil
     end
   end
 end

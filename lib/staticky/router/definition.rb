@@ -1,12 +1,6 @@
 module Staticky
   class Router
     class Definition
-      Resource = Data.define(:url, :component) do
-        def filepath
-          url == "/" ? "index.html" : "#{url}.html"
-        end
-      end
-
       attr_reader :resources
 
       def initialize

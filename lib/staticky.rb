@@ -13,11 +13,15 @@ module Staticky
     ROOT_PATH.join("build")
   end
 
+  def self.resources
+    Staticky::Router.resources
+  end
+
   module ViewHelpers
     def link_to(text, href, **, &block) # rubocop:disable Metrics/ParameterLists
       block = proc { text } unless block_given?
 
-      a(href: Router.resolve(href), **, &block)
+      a(href: Router.resolve(href).url, **, &block)
     end
   end
 
