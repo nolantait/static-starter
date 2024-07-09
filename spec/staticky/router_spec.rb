@@ -9,6 +9,6 @@ RSpec.describe Staticky::Router do
 
     expect(router.resolve("/")).to be_a(Pages::Home)
     expect(router.resolve("hello")).to be_a(Pages::Home)
-    expect(router.filepaths.keys).to include("index.html", "hello.html")
+    expect(router.filepaths).to include("index.html", "hello.html")
   end
 end

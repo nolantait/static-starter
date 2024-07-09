@@ -4,5 +4,5 @@ require "./config/boot"
 
 desc "Build the site"
 task :build do
-  Builder.new.call
+  Staticky::Builder.new.call
 end

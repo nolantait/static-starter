@@ -11,4 +11,4 @@ unless File.exist?("build/vite")
   system "bin/vite build"
 end
 
-Builder.new.call
+Staticky::Builder.new.call

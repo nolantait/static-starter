@@ -5,6 +5,11 @@ module Staticky
       new(files)
     end
 
+    def self.real
+      files = Dry::Files.new
+      new(files)
+    end
+
     def touch(*files)
       files.each do |file|
         super(file)

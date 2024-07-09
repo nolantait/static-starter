@@ -8,7 +8,11 @@ module Staticky
       end
     end
 
-    def initialize(files: Dry::Files.new, output: "build", router: Router)
+    def initialize(
+      files: Staticky::Files.real,
+      output: "build",
+      router: Staticky::Router
+    )
       @files = files
       @output_path = Pathname.new(output)
       @router = router
@@ -23,7 +27,7 @@ module Staticky
 
     def build_site
       @router
-        .filepaths
+        .endpoints
         .each do |filepath, component|
           compile(filepath, render(component))
         end

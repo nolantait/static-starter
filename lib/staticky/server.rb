@@ -1,6 +1,5 @@
 module Staticky
   class Server < Roda
-    # plugin :public, root: "build"
     plugin :common_logger, Logger.new($stdout), method: :info
     plugin :render, engine: "html"
 
