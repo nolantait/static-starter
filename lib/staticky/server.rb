@@ -5,7 +5,7 @@ module Staticky
     plugin :common_logger, Logger.new($stdout), method: :info
     plugin :render, engine: "html"
 
-    @root = Staticky::ROOT_PATH.join("build/development")
+    @root = Staticky::ROOT_PATH.join("tmp/build")
 
     plugin :error_handler do |_e|
       @root.join("500.html").read

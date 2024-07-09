@@ -28,9 +28,7 @@ module Staticky
       end
 
       def filepaths
-        @routes.keys.map do |key|
-          rename_key(key)
-        end
+        endpoints.keys
       end
 
       private

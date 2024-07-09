@@ -36,13 +36,16 @@ module Staticky
     end
 
     def copy_public_files
-      @files.children(@root_path.join("public")).each do |file|
-        copy(public_path(file), file.gsub("public/", ""))
+      public_folder = @root_path.join("public")
+
+      @files.children(public_folder).each do |file|
+        # file => "favicon.ico"
+        copy(public_path(file), file)
       end
     end
 
-    def compile(filepath, content)
-      @files.write output_path(filepath), content
+    def compile(destination, content)
+      @files.write output_path(destination), content
     end
 
     def copy(source, destination)
