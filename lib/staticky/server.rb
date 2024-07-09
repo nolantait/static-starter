@@ -12,7 +12,8 @@ module Staticky
     end
 
     plugin :error_handler do |e|
-      raise e
+      raise e if Staticky.env.test?
+
       Staticky.build_path.join("500.html").read
     end
 
@@ -30,6 +31,7 @@ module Staticky
         end
       end
 
+      # Need to return nil or Roda is unhappy
       nil
     end
   end
