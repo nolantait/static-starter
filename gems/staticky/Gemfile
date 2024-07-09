@@ -6,9 +6,8 @@ source "https://rubygems.org"
 gemspec
 
 gem "capybara"
-gem "dry-files", github: "nolantait/dry-files", branch: "entries-nt"
 gem "debug"
+gem "dry-files", github: "nolantait/dry-files", branch: "entries-nt"
 gem "rake"
 gem "rspec"
 gem "rubocop-inhouse", require: false
-

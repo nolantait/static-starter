@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Staticky
   Resource = Data.define(:url, :component) do
     def full_filepath
