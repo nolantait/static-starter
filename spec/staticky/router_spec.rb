@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-RSpec.describe Router do
+RSpec.describe Staticky::Router do
   it "defines routes" do
     router = described_class.define do
       root to: Pages::Home

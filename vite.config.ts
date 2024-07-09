@@ -10,7 +10,7 @@ export default defineConfig({
         'app/**/*',
         'lib/**/*',
       ],
-      { delay: 2000 }
+      { delay: 200 }
     ),
   ],
 })

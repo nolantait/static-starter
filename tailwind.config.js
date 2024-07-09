@@ -1,4 +1,4 @@
-const defaultTheme = require("tailwindcss/defaultTheme")
+import defaultTheme from "tailwindcss/defaultTheme"
 
 // For importing tailwind styles from protos gem
 const execSync = require('child_process').execSync;
