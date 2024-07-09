@@ -23,6 +23,7 @@ gem "vite_ruby"
 gem "zeitwerk"
 
 group :test do
+  gem "capybara", require: false
   gem "debug"
   gem "phlex-testing-capybara"
   gem "rspec"

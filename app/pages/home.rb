@@ -13,6 +13,8 @@ module Pages
         hero.content(class: "flex-col text-white") do
           h1 { "Ruby maximalism" }
           p(margin: false) { "Zen vibes only" }
+
+          link_to("Learn more", Pages::NotFound)
         end
       end
     end

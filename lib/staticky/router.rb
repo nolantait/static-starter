@@ -21,16 +21,12 @@ module Staticky
         @definition.filepaths
       end
 
-      def endpoints
-        @definition.endpoints
+      def resources
+        @definition.resources
       end
 
       def resolve(path)
-        case value = @definition.resolve(path)
-        when Class then value.new
-        else
-          value
-        end
+        @definition.resolve(path)
       end
     end
   end

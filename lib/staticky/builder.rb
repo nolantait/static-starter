@@ -25,9 +25,9 @@ module Staticky
 
     def build_site
       @router
-        .endpoints
-        .each do |filepath, component|
-          compile(filepath, render(component))
+        .resources
+        .each do |resource|
+          compile(resource.filepath, render(resource.component))
         end
     end
 

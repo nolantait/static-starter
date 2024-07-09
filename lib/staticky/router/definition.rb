@@ -1,34 +1,44 @@
 module Staticky
   class Router
     class Definition
+      Resource = Data.define(:url, :component) do
+        def filepath
+          url == "/" ? "index.html" : "#{url}.html"
+        end
+      end
+
+      attr_reader :resources
+
       def initialize
-        @routes = {}
+        @routes_by_path = {}
+        @routes_by_component = {}
+        @resources = []
       end
 
       def match(path, to:)
-        @routes[path] = to
+        component = to.then do |object|
+          object.is_a?(Class) ? object.new : object
+        end
+
+        @resources << resource = Resource.new(url: path, component:)
+        @routes_by_path[path] = resource
+        @routes_by_component[component.class] = resource
       end
 
       def root(to:)
-        @routes["/"] = to
+        match("/", to:)
       end
 
       def resolve(path)
-        @routes.fetch(path)
+        @routes_by_path.fetch(path) { @routes_by_component.fetch(path) }
       end
 
       def delete(path)
         @routes.delete(path)
       end
 
-      def endpoints
-        @routes.transform_keys do |key|
-          rename_key(key)
-        end
-      end
-
       def filepaths
-        endpoints.keys
+        @resources.map { |resource| rename_key(resource.url) }
       end
 
       private

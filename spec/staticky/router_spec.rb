@@ -7,8 +7,8 @@ RSpec.describe Staticky::Router do
       match "hello", to: Pages::Home
     end
 
-    expect(router.resolve("/")).to be_a(Pages::Home)
-    expect(router.resolve("hello")).to be_a(Pages::Home)
+    expect(router.resolve("/").component).to be_a(Pages::Home)
+    expect(router.resolve("hello").component).to be_a(Pages::Home)
     expect(router.filepaths).to include("index.html", "hello.html")
   end
 end
