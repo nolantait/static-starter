@@ -2,8 +2,8 @@
 
 RSpec.describe Pages::Home do
   it "renders" do
-    page = described_class.new.call
+    render described_class.new
 
-    expect(page).to start_with("<html")
+    expect(page).to have_css("html")
   end
 end
