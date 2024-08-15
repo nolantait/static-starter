@@ -10,6 +10,8 @@ Staticky.router.define do
   match "404", to: Errors::NotFound
   match "500", to: Errors::ServiceError
 
+  # This is just an example of using some data like markdown to generate pages
+  # in the static site. You might have JSON, or YAML, or even a database.
   Dir["content/**/*.md"].each do |file|
     parsed = FrontMatterParser::Parser.parse_file(file, loader:)
 
