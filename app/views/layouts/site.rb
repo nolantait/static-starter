@@ -32,18 +32,10 @@ module Layouts
         end
 
         body do
-          render Ui::Navbar.new
-          main(**attrs, &block)
+          render UI::Navbar.new(class: css[:navbar])
+          main(class: css[:main], &block)
         end
       end
-    end
-
-    private
-
-    def theme
-      {
-        container: "min-h-screen"
-      }
     end
   end
 end

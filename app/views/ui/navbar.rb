@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Ui
+module UI
   class Navbar < Component
     def view_template
       header(**attrs) do

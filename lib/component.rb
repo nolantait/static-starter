@@ -1,5 +1,7 @@
 # frozen_string_literal: true
 
+require "staticky/phlex/view_helpers"
+
 class Component < Protos::Component
   include ViteHelpers
 

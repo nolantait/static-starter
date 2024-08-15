@@ -14,7 +14,7 @@ module Pages
           h1 { "Ruby maximalism" }
           p(margin: false) { "Zen vibes only" }
 
-          link_to("Learn more", Pages::NotFound)
+          link_to("Learn more", Errors::NotFound)
         end
       end
     end

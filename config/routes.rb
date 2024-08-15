@@ -7,9 +7,8 @@ loader = FrontMatterParser::Loader::Yaml.new(allowlist_classes: [Date])
 
 Staticky.router.define do
   root to: Pages::Home
-  match "404", to: Pages::NotFound
-  match "500", to: Pages::ServiceError
-  match "test", to: Pages::Nested::Test
+  match "404", to: Errors::NotFound
+  match "500", to: Errors::ServiceError
 
   Dir["content/**/*.md"].each do |file|
     parsed = FrontMatterParser::Parser.parse_file(file, loader:)
