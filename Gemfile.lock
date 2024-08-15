@@ -1,27 +1,13 @@
 GIT
-  remote: https://github.com/inhouse-work/protos-markdown.git
-  revision: a21b5a62daed3d44aaef268bb63a30dd3851d2e2
+  remote: https://github.com/nolantait/staticky.git
+  revision: e268818d4bfbc06922dc65431361e5ae5bd9ba75
   branch: master
   specs:
-    protos-markdown (0.1.0)
-      markly (~> 0.7)
-      protos (>= 0.4)
-
-GIT
-  remote: https://github.com/nolantait/dry-files.git
-  revision: dc5a9db89ffd6fe81486096c80f080751f8b44e9
-  branch: entries-nt
-  specs:
-    dry-files (1.1.0)
-
-PATH
-  remote: ../staticky
-  specs:
     staticky (0.1.0)
-      dry-files
       dry-system
       phlex
       roda
+      staticky-files
       tilt
 
 GEM
@@ -135,7 +121,7 @@ GEM
     phlex-testing-capybara (0.1.0)
       capybara (~> 3.38)
       phlex (>= 0.5)
-    protos (0.4.2)
+    protos (0.4.3)
       dry-core (~> 1.0)
       dry-initializer (~> 3.1)
       dry-types (~> 1.7)
@@ -143,6 +129,10 @@ GEM
       tailwind_merge (~> 0.10)
     protos-icon (0.2.0)
       phlex (~> 1.10)
+    protos-markdown (0.1.1)
+      markly (~> 0.7)
+      protos (>= 0.4)
+      rouge (~> 4.3)
     psych (5.1.2)
       stringio
     public_suffix (6.0.1)
@@ -228,6 +218,7 @@ GEM
       rubocop-rspec (~> 3, >= 3.0.1)
     ruby-progressbar (1.13.0)
     securerandom (0.3.1)
+    staticky-files (0.1.0)
     stringio (3.1.1)
     strscan (3.1.0)
     tailwind_merge (0.12.0)
@@ -263,19 +254,16 @@ PLATFORMS
 DEPENDENCIES
   capybara
   debug
-  dry-files!
   dry-inflector
   front_matter_parser
-  listen
   phlex-testing-capybara
   protos
   protos-icon
-  protos-markdown!
+  protos-markdown
   rack
   rackup
   rake
   rerun
-  roda
   rouge
   rspec
   rubocop-inhouse
@@ -284,7 +272,7 @@ DEPENDENCIES
   zeitwerk
 
 RUBY VERSION
-   ruby 3.3.3p89
+   ruby 3.3.4p94
 
 BUNDLED WITH
    2.5.14
