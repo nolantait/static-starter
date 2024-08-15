@@ -9,6 +9,10 @@ class Component < Protos::Component
     vite_asset_path(...)
   end
 
+  def image_tag(path, alt:, **)
+    img(src: asset_path(path), alt:, **)
+  end
+
   def icon(...)
     render Icon.new(...)
   end
