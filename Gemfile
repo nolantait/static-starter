@@ -17,7 +17,7 @@ gem "rack"
 gem "rackup"
 gem "rake"
 gem "rouge"
-gem "staticky", path: "gems/staticky"
+gem "staticky", path: "../staticky"
 gem "vite_ruby"
 gem "zeitwerk"
 

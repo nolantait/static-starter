@@ -32,7 +32,7 @@ module Layouts
         end
 
         body do
-          render Components::Navbar.new
+          render Ui::Navbar.new
           main(**attrs, &block)
         end
       end

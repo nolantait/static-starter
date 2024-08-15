@@ -1,9 +1,0 @@
-require:
-  - rubocop-inhouse
-
-inherit_gem:
-  rubocop-inhouse:
-    - config/default.yml
-
-AllCops:
-  TargetRubyVersion: 3.0
