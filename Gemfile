@@ -8,16 +8,15 @@ ruby ruby_version.read.strip
 
 gem "protos"
 gem "protos-icon"
-gem "protos-markdown", github: "inhouse-work/protos-markdown", branch: "master"
+gem "protos-markdown"
 
-gem "dry-files", github: "nolantait/dry-files", branch: "entries-nt"
 gem "dry-inflector"
 gem "front_matter_parser"
 gem "rack"
 gem "rackup"
 gem "rake"
 gem "rouge"
-gem "staticky", path: "../staticky"
+gem "staticky", github: "nolantait/staticky", branch: "master"
 gem "vite_ruby"
 gem "zeitwerk"
 
@@ -29,8 +28,6 @@ group :test do
 end
 
 group :development do
-  gem "listen"
   gem "rerun"
-  gem "roda"
   gem "rubocop-inhouse", require: false
 end

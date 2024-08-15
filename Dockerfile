@@ -1,33 +1,38 @@
-# Use an official Ruby runtime as a parent image
-FROM ruby:3.3
+# Use an official Ruby runtime based on Alpine as a parent image
+FROM ruby:3.3-alpine AS builder
 
-# Install Node.js
-RUN apt-get update && \
-    apt-get install -y nodejs npm && \
+ENV RACK_ENV=production
+ENV NODE_ENV=production
+
+# Install necessary packages including Node.js and Yarn
+RUN apk add --no-cache build-base nodejs npm git && \
     npm install -g yarn
 
 # Set the working directory
 WORKDIR /app
 
-# Copy the Gemfile and Gemfile.lock into the image and install ruby dependencies
-COPY Gemfile Gemfile.lock .ruby-version ./
-RUN bundle install
+# Copy Gemfile and other necessary files
+COPY Gemfile Gemfile.lock .ruby-version package.json yarn.lock ./
 
-# Install yarn dependencies
-COPY package.json yarn.lock ./
-RUN yarn install --frozen-lockfile
+# Install dependencies
+RUN bundle install --without development test && \
+    yarn install --frozen-lockfile && \
+    rm -rf /root/.bundle/cache /usr/local/bundle/cache /var/cache/apk/*
 
 # Copy the rest of the application code
 COPY . .
 
 # Build the static site (e.g., using Jekyll)
-RUN bin/rake assets:precompile --production
+RUN bin/rake site:build
 
-# Use an official Nginx image to serve the static site
-FROM nginx:stable
+# Use an official Nginx image based on Alpine to serve the static site
+FROM nginx:stable-alpine
+
+# Copy the Nginx configuration file
+COPY nginx.conf /etc/nginx/nginx.conf
 
 # Copy the static site files to the Nginx HTML directory
-COPY --from=0 /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html/
 
 # Expose port 80 to the Docker host
 EXPOSE 80

@@ -17,12 +17,9 @@ bin/dev
 
 ## Building
 
-When your site it built with `bin/rake assets:precompile` it will output everything defined in
-your `config/routes` as well as anything in `public/`. You can then serve these
-using something like nginx.
-
-You can deploy this as-is to an instance of `dokku` which will build the site
-and serve it according to the `app-nginx.conf.sigil`
+When your site it built with `bin/rake site:build` it will output everything
+defined in your `config/routes` as well as anything in `public/` into `build/`.
+You can then serve these using something like nginx.
 
 ## Views
 
@@ -52,9 +49,8 @@ Staticky.router.define do
   root to: Pages::Home.new
 
   # Link directly to components or their classes in your routes
-  match "404", to: Pages::NotFound.new
-  match "500", to: Pages::ServiceError.new(class: "bg-red-500")
-  match "test", to: Pages::Nested::Test
+  match "404", to: Errors::NotFound.new
+  match "500", to: Errors::ServiceError.new(class: "bg-red-500")
 
   # Write your own custom logic for parsing your markdown
   Dir["content/**/*.md"].each do |file|
