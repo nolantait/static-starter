@@ -17,7 +17,7 @@ bin/dev
 
 ## Building
 
-When your site it built with `bin/build` it will output everything defined in
+When your site it built with `bin/rake assets:precompile` it will output everything defined in
 your `config/routes` as well as anything in `public/`. You can then serve these
 using something like nginx.
 

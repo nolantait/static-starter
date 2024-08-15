@@ -21,7 +21,7 @@ RUN yarn install --frozen-lockfile
 COPY . .
 
 # Build the static site (e.g., using Jekyll)
-RUN bin/build --production
+RUN bin/rake assets:precompile --production
 
 # Use an official Nginx image to serve the static site
 FROM nginx:stable
