@@ -12,4 +12,8 @@ class Component < Protos::Component
   def icon(...)
     render Icon.new(...)
   end
+
+  def inline_link(text, url)
+    render Protos::Typography::InlineLink.new(href: url) { text }
+  end
 end
