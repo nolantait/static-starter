@@ -6,10 +6,7 @@ export default defineConfig({
   plugins: [
     RubyPlugin(),
     FullReload(
-      [
-        'app/**/*',
-        'lib/**/*',
-      ],
+      ["build/index.html"],
       { delay: 200 }
     ),
   ],
